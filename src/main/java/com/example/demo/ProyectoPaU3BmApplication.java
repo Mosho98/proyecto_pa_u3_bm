@@ -22,25 +22,36 @@ public class ProyectoPaU3BmApplication implements CommandLineRunner{
 		// TODO Auto-generated method stub
 		
 		
-		Estudiante e1 = this.estudianteService.buscarPorNombreQuery("Bryan");
+		
+		System.out.println("QUERY TYPED");
+		Estudiante e6 = this.estudianteService.buscarPorNombreQueryTyped("Bryan");
+		System.out.println(e6);
+		System.out.println("--------------------------------------------------");
+		
+		System.out.println("NAMED QUERY");
+		Estudiante e1 = this.estudianteService.buscarPorNombreNamedQuery("Bryan");
 		System.out.println(e1);
 		System.out.println("--------------------------------------------------");
 		
-		Estudiante e2 = this.estudianteService.buscarPorApellidoQuery("Mullo");
+		System.out.println("NAMED QUERY TYPED");
+		Estudiante e2 = this.estudianteService.buscarPorNombreNamedQueryTyped("Bryan");
 		System.out.println(e2);
 		System.out.println("--------------------------------------------------");
 		
-		Estudiante e3 = this.estudianteService.buscarPorGeneroQuery("F");
+		System.out.println("NATIVE QUERY");
+		Estudiante e3 = this.estudianteService.buscarPorNombreNativeQuery("Bryan");
 		System.out.println(e3);
 		System.out.println("--------------------------------------------------");
 		
-		Estudiante e4 = this.estudianteService.buscarPorCedulaQuery("12345678");
+		/*
+		System.out.println("MEZCLA CON TYPED Y NATIVE");
+		Estudiante e4 = this.estudianteService.buscarPorNombreNativeQueryTypedNamed("Bryan");
 		System.out.println(e4);
-		System.out.println("--------------------------------------------------");
+		System.out.println("--------------------------------------------------");*/
 		
-		Estudiante e5 = this.estudianteService.buscarPorCiudadQuery("Loja");
-		System.out.println(e5);
-		System.out.println("--------------------------------------------------");
+		
+		
+		
 		
 		
 	}
