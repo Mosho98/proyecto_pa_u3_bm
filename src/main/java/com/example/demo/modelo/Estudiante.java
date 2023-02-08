@@ -8,7 +8,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedNativeQueries;
 import jakarta.persistence.NamedNativeQuery;
+import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
@@ -16,51 +18,57 @@ import jakarta.persistence.Table;
 //representacion tabla objeto java
 @Entity
 @Table(name = "estudiante")
-@NamedQuery(name = "Estudiante.buscarPorNom" , query = "select e from Estudiante e where e.nombre = :datoNombre" )
 
-@NamedNativeQuery(name = "Estudiante.buscarPorNombreNative", query = "select *from estudiante where estu_nombre = :datoNombre")
+
+//PARA HACER UN ARREGLO DE CONSULTAS
+@NamedQueries({
+		@NamedQuery(name = "Estudiante.buscarPorNom", query = "select e from Estudiante e where e.nombre = :datoNombre"),
+		@NamedQuery(name = "Estudiante.buscarPorNom1", query = "select e from Estudiante e where e.nombre = :datoNombre"),
+		@NamedQuery(name = "Estudiante.buscarPorNom2", query = "select e from Estudiante e where e.nombre = :datoNombre") })
+
+@NamedNativeQueries({
+		@NamedNativeQuery(name = "Estudiante.buscarPorNombreNative", query = "select *from estudiante where estu_nombre = :datoNombre", resultClass = Estudiante.class),
+		@NamedNativeQuery(name = "Estudiante.buscarPorNombreNative1", query = "select *from estudiante where estu_nombre = :datoNombre", resultClass = Estudiante.class),
+		@NamedNativeQuery(name = "Estudiante.buscarPorNombreNative2", query = "select *from estudiante where estu_nombre = :datoNombre", resultClass = Estudiante.class) })
+
 public class Estudiante {
-	//siempre mapeamos con wraper 
-	
-	@Id		
-	//name = cualquier o el nombre de la secuencia
+	// siempre mapeamos con wraper
+
+	@Id
+	// name = cualquier o el nombre de la secuencia
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estu_seq")
 	@SequenceGenerator(name = "estu_seq", sequenceName = "estu_seq", allocationSize = 1)
 	@Column(name = "estu_id")
 	private Integer id;
-	
+
 	@Column(name = "estu_nombre")
 	private String nombre;
-	
+
 	@Column(name = "estu_apellido")
 	private String apellido;
-	
+
 	@Column(name = "estu_genero")
 	private String genero;
-	
+
 	@Column(name = "estu_cedula")
 	private String cedula;
-	
+
 	@Column(name = "estu_pais")
 	private String pais;
-	
+
 	@Column(name = "estu_ciudad")
 	private String ciudad;
-	
+
 	@Column(name = "estu_hobby")
 	private String hobby;
-	
+
 	@Column(name = "estu_salario")
 	private BigDecimal salario;
-	
+
 	@Column(name = "estu_fecha_nacimieinto")
 	private LocalDateTime estu_fecha_nacimiento;
-	
-	
-	
-	
-	
-	//METODO SET Y GET
+
+	// METODO SET Y GET
 
 	public Integer getId() {
 		return id;
@@ -149,16 +157,6 @@ public class Estudiante {
 				+ salario + ", estu_fecha_nacimiento=" + estu_fecha_nacimiento + "]";
 	}
 
-	
-	
-	
-	
-	
-	//TO STRING
-	
-	
-	
-	
+	// TO STRING
 
-	
 }
