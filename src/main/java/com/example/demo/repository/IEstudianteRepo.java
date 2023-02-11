@@ -45,6 +45,10 @@ public interface IEstudianteRepo {
 	public List<Estudiante> buscarPorNombreQueryCriteriaAndOr(String nombre, String apellido, String bandera);
 	
 	
+	public int eliminarPorApellido(String apellido);
+	public int actualizarPorApellido(String apellido, String nombre);
+	
+	
 	
 	
 	
