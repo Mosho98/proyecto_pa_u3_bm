@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.modelo.Estudiante;
+import com.example.demo.modelo.dto.EstudianteDTO;
 import com.example.demo.service.IEstudianteService;
 
 @SpringBootApplication
@@ -67,15 +68,36 @@ public class ProyectoPaU3BmApplication implements CommandLineRunner{
 		/*System.out.println("GET RESULT FIRST");
 		Estudiante e4 = this.estudianteService.buscarPorNombreQueryListFirst("nombre");
 		System.out.println(e4);
-		System.out.println("--------------------------------------------------");*/
+		System.out.println("--------------------------------------------------");
 		
 		
 		
 		System.out.println("NAMED QUERY TYPED");
-		Estudiante e2 = this.estudianteService.buscarPorNombreNamedQueryTyped("Bryan");
+		Estudiante e2 = this.estudianteService.buscarPorNombreNamedQueryTyped("Mabel");
 		System.out.println(e2);
 		System.out.println("--------------------------------------------------");
 		
+		
+		System.out.println("DTO");
+		EstudianteDTO e2 = this.estudianteService.buscarPorNombreQueryTypedDTO("Bryan");
+		System.out.println(e2);
+		System.out.println("--------------------------------------------------");
+		
+		
+		System.out.println("CRITERIA API QUERY");
+		Estudiante e2 = this.estudianteService.buscarPorNombreQueryCriteria("Bryan");
+		System.out.println(e2);
+		System.out.println("--------------------------------------------------");*/
+		
+		
+List <Estudiante> estudiantes= this.estudianteService.buscarPorNombreQueryCriteriaAndOr("Bryan", "Mullo", "F");
+		
+		System.out.println("LISTA CON CRITERIA API QUERY");
+		for(Estudiante estu: estudiantes) {
+			System.out.println(estu);
+			
+		}
+		System.out.println("--------------------------------------------------");
 		
 		
 		

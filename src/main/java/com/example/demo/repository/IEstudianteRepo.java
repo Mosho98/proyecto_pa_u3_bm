@@ -40,6 +40,13 @@ public interface IEstudianteRepo {
 	
 	
 	
+	//CRITERIA QUERY
+	public Estudiante buscarPorNombreQueryCriteria(String nombre);
+	public List<Estudiante> buscarPorNombreQueryCriteriaAndOr(String nombre, String apellido, String bandera);
+	
+	
+	
+	
 	
 	
 }

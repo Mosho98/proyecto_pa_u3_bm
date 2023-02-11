@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.modelo.Estudiante;
+import com.example.demo.modelo.dto.EstudianteDTO;
 import com.example.demo.repository.IEstudianteRepo;
 
 @Service
@@ -92,6 +93,26 @@ public class EstudianteServiceImpl implements IEstudianteService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public EstudianteDTO buscarPorNombreQueryTypedDTO(String nombre) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepo.buscarPorNombreQueryTypedDTO(nombre);
+	}
+
+	@Override
+	public Estudiante buscarPorNombreQueryCriteria(String nombre) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepo.buscarPorNombreQueryCriteria(nombre);
+	}
+
+	@Override
+	public List<Estudiante> buscarPorNombreQueryCriteriaAndOr(String nombre, String apellido, String bandera) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepo.buscarPorNombreQueryCriteriaAndOr(nombre, apellido, bandera);
+	}
+	
+	
 
 	/*@Override
 	public Estudiante buscarPorNombreQueryListFirst(String nombre) {
