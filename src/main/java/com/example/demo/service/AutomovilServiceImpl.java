@@ -89,4 +89,28 @@ public class AutomovilServiceImpl implements IAutomovilService{
 		// TODO Auto-generated method stub
 		this.automovilRepo.insertar(automovil);
 	}
+
+	@Override
+	public int eliminarPorPlaca(String placa) {
+		// TODO Auto-generated method stub
+		return this.automovilRepo.eliminarPorPlaca(placa);
+	}
+
+	@Override
+	public int eliminarPorColor(String color) {
+		// TODO Auto-generated method stub
+		return this.automovilRepo.eliminarPorColor(color);
+	}
+
+	@Override
+	public int actualizarPorPlaca(String placa, String marca) {
+		// TODO Auto-generated method stub
+		return this.automovilRepo.actualizarPorPlaca(placa, marca);
+	}
+
+	@Override
+	public int actualizarPorAnio(String anio, String km) {
+		// TODO Auto-generated method stub
+		return this.automovilRepo.actualizarPorAnio(anio, km);
+	}
 }

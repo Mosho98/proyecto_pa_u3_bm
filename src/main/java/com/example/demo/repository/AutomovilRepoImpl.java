@@ -116,6 +116,42 @@ public class AutomovilRepoImpl implements IAutomovilRepo{
 		this.entityManager.persist(automovil);
 	}
 	
+	///////////////////////////////////////DEBER 14//////////////////////////////////////////////////////////////////////////////
+
+	@Override
+	public int eliminarPorPlaca(String placa) {
+		 Query query = this.entityManager.createQuery("DELETE FROM Automovil a WHERE a.placa = :placa");
+		   query.setParameter("placa", placa);
+		   
+		   return query.executeUpdate();
+	}
+
+	@Override
+	public int eliminarPorColor(String color) {
+		 Query query = this.entityManager.createQuery("DELETE FROM Automovil a WHERE a.color = :color");
+		   query.setParameter("color", color);
+		   
+		   return query.executeUpdate();
+	}
+
+	@Override
+	public int actualizarPorPlaca(String placa, String marca) {
+		Query query = this.entityManager.createQuery("UPDATE Automovil a SET a.marca = :datoMarca WHERE a.placa = :datoPlaca");
+		  query.setParameter("datoMarca", marca);
+		  query.setParameter("datoPlaca", placa);
+		  
+		  return query.executeUpdate();
+	}
+
+	@Override
+	public int actualizarPorAnio(String anio, String km) {
+		Query query = this.entityManager.createQuery("UPDATE Automovil a SET a.kilometraje = :datoKm WHERE a.anio = :datoAnio");
+		  query.setParameter("datoKm", km);
+		  query.setParameter("datoAnio", anio);
+		  
+		  return query.executeUpdate();
+	}
+	
 	
 	
 

@@ -22,13 +22,13 @@ public class Tarea13PaU3BmApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		/*
 		Automovil sail = new Automovil();
-		sail.setPlaca("LBB7250");
-		sail.setColor("Rojo");
-		sail.setMarca("Chevrolet");
+		sail.setPlaca("XBE5400");
+		sail.setColor("Amarillo");
+		sail.setMarca("Ford");
 		sail.setTipo("Manual");
-		sail.setAnio("2015");
-		sail.setCilindraje("1.4");
-		sail.setKilometraje("120.000");
+		sail.setAnio("2019");
+		sail.setCilindraje("2.5");
+		sail.setKilometraje("19.000");
 		this.automovilService.agregar(sail);*/
 		
 		/*
@@ -77,7 +77,7 @@ public class Tarea13PaU3BmApplication implements CommandLineRunner{
 		System.out.println("NATIVE QUERY BUSCAR POR TIPO");
 		Automovil e3 = this.automovilService.buscarPorTipoNativeQuery("Manual");
 		System.out.println(e3);
-		System.out.println("--------------------------------------------------");*/
+		System.out.println("--------------------------------------------------");
 		
 		
 		System.out.println("NAMED NATIVE QUERY BUSCAR POR PLACA");
@@ -93,7 +93,20 @@ public class Tarea13PaU3BmApplication implements CommandLineRunner{
 		System.out.println("NAMED NATIVE QUERY BUSCAR POR MARCA");
 		Automovil e3 =  this.automovilService.buscarPorMarcaNamedNativeQuery("Chevrolet");
 		System.out.println(e3);
-		System.out.println("--------------------------------------------------");
+		System.out.println("--------------------------------------------------");*/
+		
+		
+		int borrarPlaca = this.automovilService.eliminarPorPlaca("LBB7250");
+		System.out.println("Se eliminaron: " + borrarPlaca + "vehiculos con la placa LBB7250");
+		int borrarColor = this.automovilService.eliminarPorColor("Gris");
+		System.out.println("Se eliminaron: " + borrarColor + "vehiculos con el color Gris");	
+		
+		
+		int atualizarPlaca = this.automovilService.actualizarPorPlaca("PBB1234", "Audi");
+		System.out.println("Se actualizo: " + atualizarPlaca + "vehiculo");
+		int atualizarAnio = this.automovilService.actualizarPorAnio("2019", "15.000");
+		System.out.println("Se actualizo: " + atualizarAnio + "vehiculo");
+		
 		
 	}
 
