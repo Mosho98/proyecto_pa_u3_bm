@@ -26,6 +26,12 @@ public class Habitacion {
 	@Column(name = "habi_tipo")
 	private String habiTipo;
 	
+	public String getHabiTipo() {
+		return habiTipo;
+	}
+	public void setHabiTipo(String habiTipo) {
+		this.habiTipo = habiTipo;
+	}
 	//@ManyToOne(cascade = CascadeType.MERGE)
 	@ManyToOne
 	@JoinColumn(name = "habi_id_hotel")

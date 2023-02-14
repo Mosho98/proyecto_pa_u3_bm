@@ -7,9 +7,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.modelo.Estudiante;
-import com.example.demo.modelo.dto.EstudianteDTO;
+import com.example.demo.modelo.Habitacion;
+import com.example.demo.modelo.Hotel;
 import com.example.demo.service.IEstudianteService;
+import com.example.demo.service.IHotelService;
 
 @SpringBootApplication
 public class ProyectoPaU3BmApplication implements CommandLineRunner{
@@ -20,6 +21,9 @@ public class ProyectoPaU3BmApplication implements CommandLineRunner{
 
 	@Autowired
 	private IEstudianteService estudianteService;
+	
+	@Autowired
+	private IHotelService hotelService;
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
@@ -106,7 +110,62 @@ List <Estudiante> estudiantes= this.estudianteService.buscarPorNombreQueryCriter
 		int atualizarApe = this.estudianteService.actualizarPorApellido("Jimenez", "Maoly");
 		System.out.println(atualizarApe);*/
 		
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+List <Hotel> inner= this.hotelService.buscarHotelInnerJoin("VIP");
 		
+		System.out.println("LISTA CON INNER JOIN");
+		for(Hotel var: inner) {
+			System.out.println(var.getNombre());
+			for(Habitacion ha: var.getHabitaciones()) {
+				System.out.println("Las habitaciones de: " + var.getNombre());
+			}
+			System.out.println(var.getHabitaciones());
+			
+		}
+		System.out.println("--------------------------------------------------");
+		
+/*
+List <Hotel> leftJoin= this.hotelService.buscarHotelOuterLeftJoin("VIP");
+		
+		System.out.println("LISTA CON OUTER LEFT JOIN");
+		for(Hotel var: leftJoin) {
+			System.out.println(var);
+			
+		}
+		System.out.println("--------------------------------------------------");
+		
+		
+		
+List <Hotel> rightJoin= this.hotelService.buscarHotelOuterRightJoin("VIP");
+		
+		/*System.out.println("LISTA CON OUTER RIGHT JOIN");
+		for(Hotel var: rightJoin) {
+			System.out.println(var);
+			
+		}
+		System.out.println("--------------------------------------------------");
+		
+		/*
+List <Hotel> fullJoin= this.hotelService.buscarHotelOuterFullJoin("A1");
+		
+		System.out.println("LISTA CON OUTER FULL JOIN");
+		for(Hotel var: fullJoin) {
+			System.out.println(var);
+			
+		}
+		System.out.println("--------------------------------------------------");
+		
+		
+		
+List <Hotel> fecthJoin= this.hotelService.buscarHotelFetchJoin("A1");
+		
+		System.out.println("LISTA CON OUTER FULL JOIN");
+		for(Hotel var: fecthJoin) {
+			System.out.println(var);
+			
+		}
+		System.out.println("--------------------------------------------------");*/
 		
 		
 	}
