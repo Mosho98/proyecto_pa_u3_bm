@@ -47,11 +47,7 @@ public List<Hotel> buscarHotelInnerJoin(String tipoHabitacion) {
 		TypedQuery<Hotel> myQuery = this.entityManager.createQuery(
 				"SELECT h FROM Hotel h LEFT JOIN h.habitaciones ha WHERE ha.habiTipo = :datoTipo", Hotel.class);
 		myQuery.setParameter("datoTipo", tipoHabitacion);
-		List<Hotel> listHoteles = myQuery.getResultList();
-		// BAJO DEMANDA ES DECIR CON EL LAZY
-		for (Hotel h : listHoteles) {
-			h.getHabitaciones().size();
-		}
+				
 		return myQuery.getResultList();
 	}
 
@@ -76,6 +72,43 @@ public List<Hotel> buscarHotelInnerJoin(String tipoHabitacion) {
 
 	@Override
 	public List<Hotel> buscarHotelFetchJoin(String tipoHabitacion) {
+		TypedQuery<Hotel> myQuery = this.entityManager.createQuery(
+				"SELECT h FROM Hotel h JOIN FETCH h.habitaciones ha WHERE ha.habiTipo = :datoTipo", Hotel.class);
+		myQuery.setParameter("datoTipo", tipoHabitacion);
+		List<Hotel> listHoteles = myQuery.getResultList();
+		// BAJO DEMANDA ES DECIR CON EL LAZY
+		for (Hotel h : listHoteles) {
+			h.getHabitaciones().size();
+		}
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Hotel> buscarHotelOuterLeftJoin() {
+		TypedQuery<Hotel> myQuery = this.entityManager.createQuery(
+				"SELECT h FROM Hotel h LEFT JOIN h.habitaciones ha", Hotel.class);
+	
+		List<Hotel> lista = myQuery.getResultList();
+		for(Hotel h: lista) {
+			h.getHabitaciones().size();
+		}
+		return lista;
+	}
+
+	@Override
+	public List<Hotel> buscarHotelOuterRightJoin() {
+		TypedQuery<Hotel> myQuery = this.entityManager.createQuery(
+				"SELECT h FROM Hotel h RIGHT JOIN h.habitaciones ha", Hotel.class);
+	
+		List<Hotel> lista = myQuery.getResultList();
+//		for(Hotel h: lista) {
+//			h.getHabitaciones().size();
+//		}
+		return lista;
+	}
+
+	@Override
+	public List<Hotel> buscarHotelOuterFullJoin() {
 		// TODO Auto-generated method stub
 		return null;
 	}
